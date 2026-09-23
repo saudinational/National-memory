@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ذاكرة وطن - توثيق التراث الشفهي</title>
-    <!-- استيراد خط عربي أصيل من Google Fonts -->
+    <title>الذاكرة الوطنية - توثيق التراث الشفهي</title>
+    <!-- استيراد خط عربي أصيل -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #8B4513; /* لون بني ترابي أصيل */
-            --accent-color: #D4AF37;  /* لون ذهبي تراثي */
-            --bg-color: #FDFBF7;      /* خلفية ورقية دافئة */
+            --primary-color: #4A2511; /* بني تراثي غامق */
+            --accent-color: #D4AF37;  /* ذهبي تراثي */
+            --bg-color: #FDFBF7;      /* بيج دافئ (خلفية) */
             --card-bg: #FFFFFF;
             --text-main: #2C221E;
             --text-muted: #6B5B53;
@@ -33,7 +33,7 @@
 
         /* رأس الصفحة التراثي */
         header {
-            background: linear-gradient(135deg, #4A2511, #8B4513);
+            background: linear-gradient(135deg, #361A0C, var(--primary-color));
             color: #FFF;
             padding: 15px 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -85,7 +85,7 @@
         }
 
         .btn-record-nav:hover {
-            background-color: #f3cc45;
+            background-color: #e6c143;
             transform: translateY(-2px);
         }
 
@@ -107,7 +107,7 @@
 
         /* واجهة الترحيب (البانر) */
         .hero-banner {
-            background: linear-gradient(rgba(139, 69, 19, 0.85), rgba(74, 37, 17, 0.9)), url('https://images.unsplash.com/photo-1590073844006-33379778ae09?auto=format&fit=crop&w=800&q=80') center/cover;
+            background: linear-gradient(rgba(74, 37, 17, 0.9), rgba(54, 26, 12, 0.95));
             color: white;
             padding: 30px 20px;
             border-radius: 16px;
@@ -141,7 +141,7 @@
             gap: 8px;
         }
 
-        /* الخريطة التفاعلية المصغرة للهجات */
+        /* البطاقات والأقسام */
         .section-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -160,6 +160,51 @@
             gap: 8px;
         }
 
+        /* قسم الذكاء الاصطناعي لتحويل الكلام */
+        .ai-studio {
+            background: #F4EEDC;
+            border: 2px dashed var(--accent-color);
+            padding: 20px;
+            border-radius: 14px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .ai-studio textarea {
+            width: 100%;
+            height: 90px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 10px 0;
+            resize: none;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .btn-ai {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .ai-result {
+            margin-top: 15px;
+            background: #FFF;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: none;
+        }
+
+        /* الخريطة والتفاصيل */
         .regions-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -184,7 +229,7 @@
             color: white;
         }
 
-        /* قائمة أحدث التسجيلات (جدة فاطمة، جدي محمد، جدة نورة) */
+        /* قائمة التسجيلات (بدون صور أشخاص) */
         .recordings-list {
             display: flex;
             flex-direction: column;
@@ -197,7 +242,7 @@
             justify-content: space-between;
             background: #FAFAFA;
             border: 1px solid var(--border-color);
-            padding: 12px;
+            padding: 14px;
             border-radius: 12px;
             transition: 0.2s;
         }
@@ -207,26 +252,12 @@
             background: #FFF;
         }
 
-        .recording-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-color);
-        }
-
-        .details h4 {
+        .recording-info h4 {
             font-size: 0.95rem;
             color: var(--text-main);
         }
 
-        .details span {
+        .recording-info span {
             font-size: 0.75rem;
             color: var(--text-muted);
         }
@@ -243,31 +274,6 @@
             justify-content: center;
             cursor: pointer;
             font-size: 0.9rem;
-        }
-
-        /* قسم البحث المخصص */
-        .search-box {
-            display: flex;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            outline: none;
-            font-size: 0.9rem;
-        }
-
-        .search-box button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0 15px;
-            border-radius: 10px;
-            cursor: pointer;
         }
 
         /* تذييل الصفحة */
@@ -287,89 +293,79 @@
             <div class="logo-area">
                 <div class="logo-icon">🏺</div>
                 <div class="logo-text">
-                    <h1>ذاكرة وطن</h1>
-                    <span>أرشيف التراث الشفهي</span>
+                    <h1>الذاكرة الوطنية</h1>
+                    <span>National Memory Archive</span>
                 </div>
             </div>
-            <button class="btn-record-nav" onclick="alert('جاري فتح الاستوديو الصوتي الذكي...')">🎙️ سجل سالفة</button>
+            <button class="btn-record-nav" onclick="alert('جاري فتح الاستوديو الصوتي الذكي...')">🎙️ توثيق صوتي</button>
         </div>
     </header>
 
     <!-- المحتوى -->
     <main>
-        <!-- القسم الأيمن (الرئيسي): الترحيب والخريطة وبحث الكنوز -->
+        <!-- القسم الرئيسي -->
         <div>
             <!-- بانر الترحيب -->
             <div class="hero-banner">
-                <h2>سجّلوا حكايات الأجداد..</h2>
-                <p>إرثنا الحي بلهجاتنا الأصيلة موثق بالذكاء الاصطناعي للأجيال القادمة.</p>
-                <button class="btn-hero" onclick="alert('ابدأ بالتسجيل الصوتي الآن عبر الجوال')">
-                    🎙️ ابدأ التسجيل الآن
+                <h2>توثيق التراث الشفهي بالذكاء الاصطناعي</h2>
+                <p>AI-Powered Oral Heritage Documentation & Dialects Preservation</p>
+                <button class="btn-hero" onclick="alert('جاهز لتسجيل الحكاية وتحويلها إلى أرشيف رقمي')">
+                    🎙️ ابدأ التسجيل والتحويل الفوري
                 </button>
+            </div>
+
+            <!-- أداة تحويل الكلام بالذكاء الاصطناعي (الميزة الجديدة المطلوبة) -->
+            <div class="ai-studio">
+                <h3>⚡ محول الذكاء الاصطناعي التراثي (AI Speech-to-Text & Processing)</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">اكتب أو سجل النص الشعبي أو اللهجة المحلية ليقوم النظام بتحليلها وفهرستها:</p>
+                <textarea id="aiInput" placeholder="اكتب السالفة أو المثل الشعبي هنا (مثلاً: علوم الأجداد وأمثالهم)..."></textarea>
+                <button class="btn-ai" onclick="runAIProcess()">معالجة وتحويل إلى أرشيف رقمي</button>
+                <div id="aiResultBox" class="ai-result">
+                    <strong>نتيجة معالجة الذكاء الاصطناعي:</strong><br>
+                    <span id="aiOutputText">تم تحليل النص، استخراج المفردات، وتصنيف اللهجة بنجاح!</span>
+                </div>
             </div>
 
             <!-- الخريطة التفاعلية للهجات -->
             <div class="section-card">
-                <h3>🗺️ الخريطة التفاعلية للهجات</h3>
+                <h3>🗺️ الخريطة التفاعلية للهجات | Interactive Dialects Map</h3>
                 <div class="regions-grid">
-                    <div class="region-badge" onclick="alert('عرض سوالف ولهجات أهل نجد')">سوالف نجد</div>
-                    <div class="region-badge" onclick="alert('عرض سوالف ولهجات الحجاز')">سوالف الحجاز</div>
-                    <div class="region-badge" onclick="alert('عرض سوالف ولهجات الجنوب')">سوالف الجنوب</div>
-                    <div class="region-badge" onclick="alert('عرض سوالف ولهجات الشرقية')">سوالف الشرقية</div>
-                </div>
-            </div>
-
-            <!-- خزانة الكنوز والبحث -->
-            <div class="section-card">
-                <h3>🔍 خزانة الكنوز (البحث الذكي)</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">ابحث عن أي مفردة أو مثل شعبي قديم لا تعرف معناه...</p>
-                <div class="search-box">
-                    <input type="text" placeholder="اكتب كلمة شعبية (مثلاً: طشو، مركي)...">
-                    <button onclick="alert('جاري البحث في الأرشيف...')">بحث</button>
+                    <div class="region-badge">اللهجة النجدية | Najdi</div>
+                    <div class="region-badge">اللهجة الحجازية | Hijazi</div>
+                    <div class="region-badge">اللهجة الجنوبية | Southern</div>
+                    <div class="region-badge">اللهجة الشرقية | Eastern</div>
                 </div>
             </div>
         </div>
 
-        <!-- القسم الأيسر: أحدث التسجيلات (بناءً على طلبك) -->
+        <!-- القسم الجانبي: القائمة بدون صور أشخاص -->
         <div>
             <div class="section-card">
-                <h3>📜 أحدث التسجيلات المحفوظة</h3>
+                <h3>📜 الأرشيف الصوتي المحفوظ | Archive</h3>
                 <div class="recordings-list">
                     
-                    <!-- تسجيل جدة فاطمة -->
                     <div class="recording-item">
                         <div class="recording-info">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="جدة فاطمة" class="avatar">
-                            <div class="details">
-                                <h4>جدة فاطمة</h4>
-                                <span>قصص أهل الحجاز القديمة (3 د)</span>
-                            </div>
+                            <h4>تسجيل تراثي: قصص البادية</h4>
+                            <span>منطقة نجد - 3 دقائق | Najdi Oral Tale</span>
                         </div>
-                        <button class="play-btn" onclick="alert('جاري تشغيل تسجيل: جدة فاطمة')">▶</button>
+                        <button class="play-btn" onclick="alert('جاري تشغيل التسجيل الصوتي...')">▶</button>
                     </div>
 
-                    <!-- تسجيل جدي محمد -->
                     <div class="recording-item">
                         <div class="recording-info">
-                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="جدي محمد" class="avatar">
-                            <div class="details">
-                                <h4>جدي محمد</h4>
-                                <span>حكايات العمارة النجدية (5 د)</span>
-                            </div>
+                            <h4>الأمثال والأهازيج القديمة</h4>
+                            <span>الحجاز - 5 دقائق | Hijazi Proverbs</span>
                         </div>
-                        <button class="play-btn" onclick="alert('جاري تشغيل تسجيل: جدي محمد')">▶</button>
+                        <button class="play-btn" onclick="alert('جاري تشغيل التسجيل الصوتي...')">▶</button>
                     </div>
 
-                    <!-- تسجيل جدة نورة -->
                     <div class="recording-item">
                         <div class="recording-info">
-                            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=100&q=80" alt="جدة نورة" class="avatar">
-                            <div class="details">
-                                <h4>جدة نورة</h4>
-                                <span>الأمثال والأهازيج البادية (2 د)</span>
-                            </div>
+                            <h4>المووروث الشفهي والمفردات</h4>
+                            <span>الجنوب - 2 دقيقة | Southern Heritage</span>
                         </div>
-                        <button class="play-btn" onclick="alert('جاري تشغيل تسجيل: جدة نورة')">▶</button>
+                        <button class="play-btn" onclick="alert('جاري تشغيل التسجيل الصوتي...')">▶</button>
                     </div>
 
                 </div>
@@ -379,8 +375,23 @@
 
     <!-- تذييل الصفحة -->
     <footer>
-        <p>جميع الحقوق محفوظة - منصة ذاكرة وطن بالذكاء الاصطناعي © 2026</p>
+        <p>مشروع الذاكرة الوطنية بالذكاء الاصطناعي © 2026 - جميع الحقوق محفوظة</p>
     </footer>
 
+    <script>
+        function runAIProcess() {
+            const inputVal = document.getElementById('aiInput').value;
+            const resultBox = document.getElementById('aiResultBox');
+            const outputText = document.getElementById('aiOutputText');
+            
+            if(inputVal.trim() === "") {
+                alert("الرجاء إدخال نص أو عبارة شعبية للمعالجة أولاً.");
+                return;
+            }
+            
+            resultBox.style.display = "block";
+            outputText.innerHTML = "✨ تم بنجاح تحليل النص: \"" + inputVal + "\" وتم تفريغه رقمياً، استخراج المفردات التراثية، وربطه بالخريطة الجغرافية الوطنية!";
+        }
+    </script>
 </body>
 </html>
