@@ -66,18 +66,6 @@
             display: block;
         }
 
-        .btn-record-nav {
-            background-color: var(--accent-color);
-            color: #2C221E;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
         main {
             max-width: 1200px;
             margin: 20px auto;
@@ -100,69 +88,90 @@
             border-radius: 16px;
             text-align: center;
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
 
         .hero-banner h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 8px;
             color: var(--accent-color);
         }
 
         .hero-banner p {
             font-size: 0.85rem;
-            margin-bottom: 15px;
             opacity: 0.9;
         }
 
-        /* استوديو الذكاء الاصطناعي لتحويل النص/الصوت إلى فيديو */
-        .video-studio {
-            background: #F4EEDC;
-            border: 2px solid var(--accent-color);
-            padding: 20px;
+        /* حاوية الأقسام الثلاثة */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
-            margin-top: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
         }
 
-        .video-studio h3 {
-            font-size: 1.1rem;
+        .section-card h3 {
+            font-size: 1.05rem;
             color: var(--primary-color);
-            margin-bottom: 8px;
-        }
-
-        .video-studio p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
             margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .video-studio textarea {
-            width: 100%;
-            height: 90px;
+        /* تبويبات الخيارات الثلاثة */
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            background: #F4EEDC;
+            padding: 6px;
+            border-radius: 12px;
+        }
+
+        .tab-btn {
+            flex: 1;
             padding: 10px;
+            border: none;
+            background: transparent;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: var(--accent-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* تنسيق عناصر الإدخال والأزرار داخل التبويبات */
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             margin-bottom: 12px;
-            resize: none;
             outline: none;
             font-size: 0.9rem;
+            resize: none;
         }
 
-        .video-options {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .video-options select {
-            flex: 1;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            background: #FFF;
-            font-size: 0.85rem;
-        }
-
-        .btn-generate {
+        .btn-action {
             background: var(--primary-color);
             color: white;
             border: none;
@@ -171,16 +180,36 @@
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: 0.2s;
         }
 
-        .btn-generate:hover {
+        .btn-action:hover {
             background: #361A0C;
         }
 
-        /* نافذة معاينة الفيديو الناتج */
-        .video-output-preview {
+        .recorder-box {
+            background: #FDFBF7;
+            border: 2px dashed var(--accent-color);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .mic-icon-btn {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .output-preview {
             margin-top: 15px;
             background: #2C221E;
             color: #FFF;
@@ -188,34 +217,6 @@
             border-radius: 10px;
             text-align: center;
             display: none;
-        }
-
-        .video-player-mock {
-            background: #1a1412;
-            border: 1px dashed var(--accent-color);
-            height: 140px;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-            gap: 8px;
-        }
-
-        .section-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            margin-top: 20px;
-        }
-
-        .section-card h3 {
-            font-size: 1.05rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
         }
 
         .regions-grid {
@@ -232,7 +233,6 @@
             text-align: center;
             font-weight: 600;
             font-size: 0.85rem;
-            cursor: pointer;
             color: var(--primary-color);
         }
 
@@ -261,16 +261,6 @@
             color: var(--text-muted);
         }
 
-        .action-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-
         footer {
             text-align: center;
             margin-top: 40px;
@@ -287,51 +277,60 @@
                 <span style="font-size: 24px;">🏺</span>
                 <div class="logo-text">
                     <h1>الذاكرة الوطنية</h1>
-                    <span>National Memory AI Platform</span>
+                    <span>National Memory Platform</span>
                 </div>
             </div>
-            <button class="btn-record-nav" onclick="alert('الانتقال لاستوديو التسجيل الصوتي...')">🎙️ تسجيل جديد</button>
         </div>
     </header>
 
     <main>
         <div>
             <div class="hero-banner">
-                <h2>توثيق التراث الشفهي وتحويله إلى مقاطع مرئية بالذكاء الاصطناعي</h2>
-                <p>AI-Powered Oral Heritage & Video Generation Platform for Saudi Dialects</p>
+                <h2>توثيق التراث الشفهي والهة المحلية</h2>
+                <p>Oral Heritage Documentation & AI-Powered Processing</p>
             </div>
 
-            <!-- أداة تحويل النص أو الصوت إلى مقطع مرئي (فيديو) -->
-            <div class="video-studio">
-                <h3>🎬 مُنشئ المقاطع المرئية الذكي (AI Video Generator)</h3>
-                <p>اكتب القصة أو السالفة الشعبية، وسيقوم الذكاء الاصطناعي بتحويلها إلى مقطع مرئي وثائقي جاهز:</p>
+            <!-- قسم خيارات الإدخال الثلاثة -->
+            <div class="section-card">
+                <h3>🎛️ مركز المساهمة والتوثيق (Contribution Hub)</h3>
                 
-                <textarea id="storyInput" placeholder="اكتب النص التراثي أو قصة الأجداد هنا... (Type your heritage text here...)"></textarea>
-                
-                <div class="video-options">
-                    <select id="dialectSelect">
-                        <option value="نجدي">اللهجة النجدية (Najdi)</option>
-                        <option value="حجازي">اللهجة الحجازية (Hijazi)</option>
-                        <option value="جنوبي">اللهجة الجنوبية (Southern)</option>
-                        <option value="شرقي">اللهجة الشرقية (Eastern)</option>
-                    </select>
-                    <select id="styleSelect">
-                        <option value="وثائقي تراثي">نمط وثائقي تراثي (Heritage Doc)</option>
-                        <option value="موشن جرافيك">نمط موشن جرافيك (Motion Graphic)</option>
-                    </select>
+                <!-- أزرار التبويبات الثلاثة -->
+                <div class="tabs-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'tabWrite')">1. كتابة القصص</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'tabRecord')">2. التسجيل الصوتي</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'tabAI')">3. تحويل لمقطع مرئي</button>
                 </div>
 
-                <button class="btn-generate" onclick="generateVideoAI()">✨ تحويل النص إلى مقطع مرئي بالذكاء الاصطناعي</button>
+                <!-- الخيار الأول: كتابة القصص -->
+                <div id="tabWrite" class="tab-content active">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">اكتب السالفة أو المثل الشعبي يدوياً لإضافته للأرشيف النصي:</p>
+                    <input type="text" id="storyTitle" placeholder="عنوان القصة أو المثل (Title)">
+                    <textarea id="storyTextBody" placeholder="اكتب تفاصيل القصة هنا... (Write the story here)"></textarea>
+                    <button class="btn-action" onclick="saveWrittenStory()">حفظ القصة في الأرشيف</button>
+                </div>
 
-                <!-- معاينة الفيديو الناتج -->
-                <div id="videoResultBox" class="video-output-preview">
-                    <strong>🎬 تم إنتاج المقطع المرئي بنجاح!</strong>
-                    <div class="video-player-mock">
-                        <span style="color: var(--accent-color); font-size: 24px;">▶</span>
-                        <span id="videoDescText" style="font-size: 0.8rem; color: #E6DCCD;">جاري دمج السرد الصوتي مع الخلفيات التراثية...</span>
+                <!-- الخيار الثاني: التسجيل الصوتي -->
+                <div id="tabRecord" class="tab-content">
+                    <div class="recorder-box">
+                        <button class="mic-icon-btn" onclick="toggleRecording()">🎙️</button>
+                        <p id="recordStatusText" style="font-size: 0.85rem; color: var(--primary-color); font-weight: 700;">اضغط لبدء التسجيل الصوتي بلهجتك المحلية</p>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">Tap to record your local dialect voice note</span>
                     </div>
-                    <button class="action-btn" style="margin-top: 10px; background: var(--accent-color); color: #2C221E;" onclick="alert('تم تحميل المقطع المرئي بنجاح إلى جهازك!')">تحميل الفيديو (Download MP4)</button>
                 </div>
+
+                <!-- الخيار الثالث: تحويل النص/الصوت إلى مقطع مرئي بالذكاء الاصطناعي -->
+                <div id="tabAI" class="tab-content">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">أدخل النص أو استخدم الملف الصوتي ليقوم الذكاء الاصطناعي بإنتاج مقطع مرئي (فيديو وثائقي):</p>
+                    <textarea id="aiSourceText" placeholder="اكتب النص المراد تحويله إلى فيديو..."></textarea>
+                    <button class="btn-action" style="background: var(--accent-color); color: var(--primary-color);" onclick="generateAIVideo()">✨ توليد المقطع المرئي (Generate Video)</button>
+                    
+                    <div id="aiVideoPreview" class="output-preview">
+                        <strong>🎬 تم إنتاج المقطع المرئي بنجاح!</strong>
+                        <p style="font-size: 0.75rem; color: #E6DCCD; margin-top: 5px;">تم دمج السرد مع الخلفيات التراثية الجغرافية.</p>
+                        <button class="btn-action" style="margin-top: 10px; font-size: 0.8rem;" onclick="alert('تم تنزيل المقطع المرئي بجودة عالية!')">تنزيل الفيديو (Download MP4)</button>
+                    </div>
+                </div>
+
             </div>
 
             <div class="section-card">
@@ -347,25 +346,22 @@
 
         <div>
             <div class="section-card">
-                <h3>📜 الأرشيف المرئي الجاهز | Video Archive</h3>
+                <h3>📜 الأرشيف المحفوظ | Archive</h3>
                 <div class="recordings-list">
-                    
                     <div class="recording-item">
                         <div class="recording-info">
-                            <h4>قصص البادية وأمثالها</h4>
-                            <span>مقطع مرئي وثائقي - 48 ثانية</span>
+                            <h4>أرشيف القصص النصية</h4>
+                            <span>محدثات المجتمع</span>
                         </div>
-                        <button class="action-btn" onclick="alert('عرض المقطع المرئي المنتج...')">مشاهدة</button>
+                        <span style="font-size: 0.75rem; color: var(--accent-color); font-weight: 700;">نشط</span>
                     </div>
-
                     <div class="recording-item">
                         <div class="recording-info">
-                            <h4>حكايات الحجاز القديمة</h4>
-                            <span>مقطع موشن جرافيك - 1 دقيقة</span>
+                            <h4>الأرشيف المرئي (فيديو)</h4>
+                            <span>مخرجات الذكاء الاصطناعي</span>
                         </div>
-                        <button class="action-btn" onclick="alert('عرض المقطع المرئي المنتج...')">مشاهدة</button>
+                        <span style="font-size: 0.75rem; color: var(--accent-color); font-weight: 700;">نشط</span>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -376,20 +372,48 @@
     </footer>
 
     <script>
-        function generateVideoAI() {
-            const text = document.getElementById('storyInput').value;
-            const dialect = document.getElementById('dialectSelect').value;
-            const style = document.getElementById('styleSelect').value;
-            const resultBox = document.getElementById('videoResultBox');
-            const descText = document.getElementById('videoDescText');
+        // دالة التبديل بين التبويبات الثلاثة
+        function switchTab(evt, tabName) {
+            let contents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            let buttons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
 
-            if(text.trim() === "") {
-                alert("الرجاء كتابة النص التراثي أولاً لكي يتم تحويله إلى فيديو.");
+        // تفاعلات الأزرار للمحاكاة
+        function saveWrittenStory() {
+            const title = document.getElementById('storyTitle').value;
+            if(title.trim() === "") {
+                alert("الرجاء كتابة عنوان القصة أولاً.");
                 return;
             }
+            alert("تم حفظ القصة النصية بنجاح في الأرشيف الوطني!");
+        }
 
-            resultBox.style.display = "block";
-            descText.innerHTML = `تمت معالجة النص (${dialect}) بأسلوب (${style}) وتحويله لمقطع مرئي رقمي!`;
+        let isRecording = false;
+        function toggleRecording() {
+            isRecording = !isRecording;
+            const statusText = document.getElementById('recordStatusText');
+            if(isRecording) {
+                statusText.innerHTML = "🔴 جاري التسجيل الآن... (اضغط مرة أخرى للإيقاف)";
+            } else {
+                statusText.innerHTML = "✅ تم حفظ التسجيل الصوتي ومعالجته بنجاح!";
+            }
+        }
+
+        function generateAIVideo() {
+            const text = document.getElementById('aiSourceText').value;
+            if(text.trim() === "") {
+                alert("الرجاء إدخال النص لتحويله إلى مقطع مرئي.");
+                return;
+            }
+            document.getElementById('aiVideoPreview').style.display = "block";
         }
     </script>
 </body>
