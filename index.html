@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ذاكرة وطن - توثيق التراث الشفهي</title>
+    <!-- استيراد خط عربي أصيل من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B4513; /* لون بني ترابي أصيل */
+            --accent-color: #D4AF37;  /* لون ذهبي تراثي */
+            --bg-color: #FDFBF7;      /* خلفية ورقية دافئة */
+            --card-bg: #FFFFFF;
+            --text-main: #2C221E;
+            --text-muted: #6B5B53;
+            --border-color: #E6DCCD;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        /* رأس الصفحة التراثي */
+        header {
+            background: linear-gradient(135deg, #4A2511, #8B4513);
+            color: #FFF;
+            padding: 15px 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--accent-color);
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            color: #E6DCCD;
+        }
+
+        .btn-record-nav {
+            background-color: var(--accent-color);
+            color: #2C221E;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .btn-record-nav:hover {
+            background-color: #f3cc45;
+            transform: translateY(-2px);
+        }
+
+        /* المحتوى الرئيسي */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            main {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* واجهة الترحيب (البانر) */
+        .hero-banner {
+            background: linear-gradient(rgba(139, 69, 19, 0.85), rgba(74, 37, 17, 0.9)), url('https://images.unsplash.com/photo-1590073844006-33379778ae09?auto=format&fit=crop&w=800&q=80') center/cover;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero-banner h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .hero-banner p {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .btn-hero {
+            background-color: var(--accent-color);
+            color: #2C221E;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* الخريطة التفاعلية المصغرة للهجات */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            margin-top: 20px;
+        }
+
+        .section-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .region-badge {
+            background-color: #F4EEDC;
+            border: 1px solid #D6C7A1;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--primary-color);
+        }
+
+        .region-badge:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* قائمة أحدث التسجيلات (جدة فاطمة، جدي محمد، جدة نورة) */
+        .recordings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .recording-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #FAFAFA;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+
+        .recording-item:hover {
+            border-color: var(--accent-color);
+            background: #FFF;
+        }
+
+        .recording-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+        }
+
+        .details h4 {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .details span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .play-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* قسم البحث المخصص */
+        .search-box {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .search-box button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* تذييل الصفحة */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- رأس الصفحة -->
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <div class="logo-icon">🏺</div>
+                <div class="logo-text">
+                    <h1>ذاكرة وطن</h1>
+                    <span>أرشيف التراث الشفهي</span>
+                </div>
+            </div>
+            <button class="btn-record-nav" onclick="alert('جاري فتح الاستوديو الصوتي الذكي...')">🎙️ سجل سالفة</button>
+        </div>
+    </header>
+
+    <!-- المحتوى -->
+    <main>
+        <!-- القسم الأيمن (الرئيسي): الترحيب والخريطة وبحث الكنوز -->
+        <div>
+            <!-- بانر الترحيب -->
+            <div class="hero-banner">
+                <h2>سجّلوا حكايات الأجداد..</h2>
+                <p>إرثنا الحي بلهجاتنا الأصيلة موثق بالذكاء الاصطناعي للأجيال القادمة.</p>
+                <button class="btn-hero" onclick="alert('ابدأ بالتسجيل الصوتي الآن عبر الجوال')">
+                    🎙️ ابدأ التسجيل الآن
+                </button>
+            </div>
+
+            <!-- الخريطة التفاعلية للهجات -->
+            <div class="section-card">
+                <h3>🗺️ الخريطة التفاعلية للهجات</h3>
+                <div class="regions-grid">
+                    <div class="region-badge" onclick="alert('عرض سوالف ولهجات أهل نجد')">سوالف نجد</div>
+                    <div class="region-badge" onclick="alert('عرض سوالف ولهجات الحجاز')">سوالف الحجاز</div>
+                    <div class="region-badge" onclick="alert('عرض سوالف ولهجات الجنوب')">سوالف الجنوب</div>
+                    <div class="region-badge" onclick="alert('عرض سوالف ولهجات الشرقية')">سوالف الشرقية</div>
+                </div>
+            </div>
+
+            <!-- خزانة الكنوز والبحث -->
+            <div class="section-card">
+                <h3>🔍 خزانة الكنوز (البحث الذكي)</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">ابحث عن أي مفردة أو مثل شعبي قديم لا تعرف معناه...</p>
+                <div class="search-box">
+                    <input type="text" placeholder="اكتب كلمة شعبية (مثلاً: طشو، مركي)...">
+                    <button onclick="alert('جاري البحث في الأرشيف...')">بحث</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- القسم الأيسر: أحدث التسجيلات (بناءً على طلبك) -->
+        <div>
+            <div class="section-card">
+                <h3>📜 أحدث التسجيلات المحفوظة</h3>
+                <div class="recordings-list">
+                    
+                    <!-- تسجيل جدة فاطمة -->
+                    <div class="recording-item">
+                        <div class="recording-info">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="جدة فاطمة" class="avatar">
+                            <div class="details">
+                                <h4>جدة فاطمة</h4>
+                                <span>قصص أهل الحجاز القديمة (3 د)</span>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="alert('جاري تشغيل تسجيل: جدة فاطمة')">▶</button>
+                    </div>
+
+                    <!-- تسجيل جدي محمد -->
+                    <div class="recording-item">
+                        <div class="recording-info">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="جدي محمد" class="avatar">
+                            <div class="details">
+                                <h4>جدي محمد</h4>
+                                <span>حكايات العمارة النجدية (5 د)</span>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="alert('جاري تشغيل تسجيل: جدي محمد')">▶</button>
+                    </div>
+
+                    <!-- تسجيل جدة نورة -->
+                    <div class="recording-item">
+                        <div class="recording-info">
+                            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=100&q=80" alt="جدة نورة" class="avatar">
+                            <div class="details">
+                                <h4>جدة نورة</h4>
+                                <span>الأمثال والأهازيج البادية (2 د)</span>
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="alert('جاري تشغيل تسجيل: جدة نورة')">▶</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p>جميع الحقوق محفوظة - منصة ذاكرة وطن بالذكاء الاصطناعي © 2026</p>
+    </footer>
+
+</body>
+</html>
