@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الذاكرة الوطنية - توثيق التراث الشفهي</title>
-    <!-- استيراد خط عربي أصيل -->
+    <title>الذاكرة الوطنية - National Memory</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #4A2511; /* بني تراثي غامق */
             --accent-color: #D4AF37;  /* ذهبي تراثي */
-            --bg-color: #FDFBF7;      /* بيج دافئ (خلفية) */
+            --bg-color: #FDFBF7;      /* بيج دافئ للخلفية */
             --card-bg: #FFFFFF;
             --text-main: #2C221E;
             --text-muted: #6B5B53;
@@ -31,7 +30,6 @@
             padding-bottom: 40px;
         }
 
-        /* رأس الصفحة التراثي */
         header {
             background: linear-gradient(135deg, #361A0C, var(--primary-color));
             color: #FFF;
@@ -56,10 +54,6 @@
             gap: 10px;
         }
 
-        .logo-icon {
-            font-size: 28px;
-        }
-
         .logo-text h1 {
             font-size: 1.2rem;
             font-weight: 900;
@@ -69,6 +63,7 @@
         .logo-text span {
             font-size: 0.75rem;
             color: #E6DCCD;
+            display: block;
         }
 
         .btn-record-nav {
@@ -81,15 +76,8 @@
             font-size: 0.85rem;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: 0.3s;
         }
 
-        .btn-record-nav:hover {
-            background-color: #e6c143;
-            transform: translateY(-2px);
-        }
-
-        /* المحتوى الرئيسي */
         main {
             max-width: 1200px;
             margin: 20px auto;
@@ -105,7 +93,6 @@
             }
         }
 
-        /* واجهة الترحيب (البانر) */
         .hero-banner {
             background: linear-gradient(rgba(74, 37, 17, 0.9), rgba(54, 26, 12, 0.95));
             color: white;
@@ -116,32 +103,106 @@
         }
 
         .hero-banner h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
             color: var(--accent-color);
         }
 
         .hero-banner p {
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
             opacity: 0.9;
         }
 
-        .btn-hero {
-            background-color: var(--accent-color);
-            color: #2C221E;
+        /* استوديو الذكاء الاصطناعي لتحويل النص/الصوت إلى فيديو */
+        .video-studio {
+            background: #F4EEDC;
+            border: 2px solid var(--accent-color);
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+
+        .video-studio h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .video-studio p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .video-studio textarea {
+            width: 100%;
+            height: 90px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 12px;
+            resize: none;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .video-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .video-options select {
+            flex: 1;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: #FFF;
+            font-size: 0.85rem;
+        }
+
+        .btn-generate {
+            background: var(--primary-color);
+            color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 1rem;
             cursor: pointer;
-            display: inline-flex;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .btn-generate:hover {
+            background: #361A0C;
+        }
+
+        /* نافذة معاينة الفيديو الناتج */
+        .video-output-preview {
+            margin-top: 15px;
+            background: #2C221E;
+            color: #FFF;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .video-player-mock {
+            background: #1a1412;
+            border: 1px dashed var(--accent-color);
+            height: 140px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            margin-top: 10px;
             gap: 8px;
         }
 
-        /* البطاقات والأقسام */
         .section-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -152,59 +213,11 @@
         }
 
         .section-card h3 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--primary-color);
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        /* قسم الذكاء الاصطناعي لتحويل الكلام */
-        .ai-studio {
-            background: #F4EEDC;
-            border: 2px dashed var(--accent-color);
-            padding: 20px;
-            border-radius: 14px;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .ai-studio textarea {
-            width: 100%;
-            height: 90px;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            margin: 10px 0;
-            resize: none;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        .btn-ai {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .ai-result {
-            margin-top: 15px;
-            background: #FFF;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            display: none;
-        }
-
-        /* الخريطة والتفاصيل */
         .regions-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -218,22 +231,15 @@
             border-radius: 10px;
             text-align: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: 0.2s;
             color: var(--primary-color);
         }
 
-        .region-badge:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        /* قائمة التسجيلات (بدون صور أشخاص) */
         .recordings-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .recording-item {
@@ -242,130 +248,122 @@
             justify-content: space-between;
             background: #FAFAFA;
             border: 1px solid var(--border-color);
-            padding: 14px;
-            border-radius: 12px;
-            transition: 0.2s;
-        }
-
-        .recording-item:hover {
-            border-color: var(--accent-color);
-            background: #FFF;
+            padding: 12px;
+            border-radius: 10px;
         }
 
         .recording-info h4 {
-            font-size: 0.95rem;
-            color: var(--text-main);
-        }
-
-        .recording-info span {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .play-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
             font-size: 0.9rem;
         }
 
-        /* تذييل الصفحة */
+        .recording-info span {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .action-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
-    <!-- رأس الصفحة -->
     <header>
         <div class="header-container">
             <div class="logo-area">
-                <div class="logo-icon">🏺</div>
+                <span style="font-size: 24px;">🏺</span>
                 <div class="logo-text">
                     <h1>الذاكرة الوطنية</h1>
-                    <span>National Memory Archive</span>
+                    <span>National Memory AI Platform</span>
                 </div>
             </div>
-            <button class="btn-record-nav" onclick="alert('جاري فتح الاستوديو الصوتي الذكي...')">🎙️ توثيق صوتي</button>
+            <button class="btn-record-nav" onclick="alert('الانتقال لاستوديو التسجيل الصوتي...')">🎙️ تسجيل جديد</button>
         </div>
     </header>
 
-    <!-- المحتوى -->
     <main>
-        <!-- القسم الرئيسي -->
         <div>
-            <!-- بانر الترحيب -->
             <div class="hero-banner">
-                <h2>توثيق التراث الشفهي بالذكاء الاصطناعي</h2>
-                <p>AI-Powered Oral Heritage Documentation & Dialects Preservation</p>
-                <button class="btn-hero" onclick="alert('جاهز لتسجيل الحكاية وتحويلها إلى أرشيف رقمي')">
-                    🎙️ ابدأ التسجيل والتحويل الفوري
-                </button>
+                <h2>توثيق التراث الشفهي وتحويله إلى مقاطع مرئية بالذكاء الاصطناعي</h2>
+                <p>AI-Powered Oral Heritage & Video Generation Platform for Saudi Dialects</p>
             </div>
 
-            <!-- أداة تحويل الكلام بالذكاء الاصطناعي (الميزة الجديدة المطلوبة) -->
-            <div class="ai-studio">
-                <h3>⚡ محول الذكاء الاصطناعي التراثي (AI Speech-to-Text & Processing)</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">اكتب أو سجل النص الشعبي أو اللهجة المحلية ليقوم النظام بتحليلها وفهرستها:</p>
-                <textarea id="aiInput" placeholder="اكتب السالفة أو المثل الشعبي هنا (مثلاً: علوم الأجداد وأمثالهم)..."></textarea>
-                <button class="btn-ai" onclick="runAIProcess()">معالجة وتحويل إلى أرشيف رقمي</button>
-                <div id="aiResultBox" class="ai-result">
-                    <strong>نتيجة معالجة الذكاء الاصطناعي:</strong><br>
-                    <span id="aiOutputText">تم تحليل النص، استخراج المفردات، وتصنيف اللهجة بنجاح!</span>
+            <!-- أداة تحويل النص أو الصوت إلى مقطع مرئي (فيديو) -->
+            <div class="video-studio">
+                <h3>🎬 مُنشئ المقاطع المرئية الذكي (AI Video Generator)</h3>
+                <p>اكتب القصة أو السالفة الشعبية، وسيقوم الذكاء الاصطناعي بتحويلها إلى مقطع مرئي وثائقي جاهز:</p>
+                
+                <textarea id="storyInput" placeholder="اكتب النص التراثي أو قصة الأجداد هنا... (Type your heritage text here...)"></textarea>
+                
+                <div class="video-options">
+                    <select id="dialectSelect">
+                        <option value="نجدي">اللهجة النجدية (Najdi)</option>
+                        <option value="حجازي">اللهجة الحجازية (Hijazi)</option>
+                        <option value="جنوبي">اللهجة الجنوبية (Southern)</option>
+                        <option value="شرقي">اللهجة الشرقية (Eastern)</option>
+                    </select>
+                    <select id="styleSelect">
+                        <option value="وثائقي تراثي">نمط وثائقي تراثي (Heritage Doc)</option>
+                        <option value="موشن جرافيك">نمط موشن جرافيك (Motion Graphic)</option>
+                    </select>
+                </div>
+
+                <button class="btn-generate" onclick="generateVideoAI()">✨ تحويل النص إلى مقطع مرئي بالذكاء الاصطناعي</button>
+
+                <!-- معاينة الفيديو الناتج -->
+                <div id="videoResultBox" class="video-output-preview">
+                    <strong>🎬 تم إنتاج المقطع المرئي بنجاح!</strong>
+                    <div class="video-player-mock">
+                        <span style="color: var(--accent-color); font-size: 24px;">▶</span>
+                        <span id="videoDescText" style="font-size: 0.8rem; color: #E6DCCD;">جاري دمج السرد الصوتي مع الخلفيات التراثية...</span>
+                    </div>
+                    <button class="action-btn" style="margin-top: 10px; background: var(--accent-color); color: #2C221E;" onclick="alert('تم تحميل المقطع المرئي بنجاح إلى جهازك!')">تحميل الفيديو (Download MP4)</button>
                 </div>
             </div>
 
-            <!-- الخريطة التفاعلية للهجات -->
             <div class="section-card">
                 <h3>🗺️ الخريطة التفاعلية للهجات | Interactive Dialects Map</h3>
                 <div class="regions-grid">
-                    <div class="region-badge">اللهجة النجدية | Najdi</div>
-                    <div class="region-badge">اللهجة الحجازية | Hijazi</div>
-                    <div class="region-badge">اللهجة الجنوبية | Southern</div>
-                    <div class="region-badge">اللهجة الشرقية | Eastern</div>
+                    <div class="region-badge">تراث نجد | Najd</div>
+                    <div class="region-badge">تراث الحجاز | Hijaz</div>
+                    <div class="region-badge">تراث الجنوب | South</div>
+                    <div class="region-badge">تراث الشرقية | East</div>
                 </div>
             </div>
         </div>
 
-        <!-- القسم الجانبي: القائمة بدون صور أشخاص -->
         <div>
             <div class="section-card">
-                <h3>📜 الأرشيف الصوتي المحفوظ | Archive</h3>
+                <h3>📜 الأرشيف المرئي الجاهز | Video Archive</h3>
                 <div class="recordings-list">
                     
                     <div class="recording-item">
                         <div class="recording-info">
-                            <h4>تسجيل تراثي: قصص البادية</h4>
-                            <span>منطقة نجد - 3 دقائق | Najdi Oral Tale</span>
+                            <h4>قصص البادية وأمثالها</h4>
+                            <span>مقطع مرئي وثائقي - 48 ثانية</span>
                         </div>
-                        <button class="play-btn" onclick="alert('جاري تشغيل التسجيل الصوتي...')">▶</button>
+                        <button class="action-btn" onclick="alert('عرض المقطع المرئي المنتج...')">مشاهدة</button>
                     </div>
 
                     <div class="recording-item">
                         <div class="recording-info">
-                            <h4>الأمثال والأهازيج القديمة</h4>
-                            <span>الحجاز - 5 دقائق | Hijazi Proverbs</span>
+                            <h4>حكايات الحجاز القديمة</h4>
+                            <span>مقطع موشن جرافيك - 1 دقيقة</span>
                         </div>
-                        <button class="play-btn" onclick="alert('جاري تشغيل التسجيل الصوتي...')">▶</button>
-                    </div>
-
-                    <div class="recording-item">
-                        <div class="recording-info">
-                            <h4>المووروث الشفهي والمفردات</h4>
-                            <span>الجنوب - 2 دقيقة | Southern Heritage</span>
-                        </div>
-                        <button class="play-btn" onclick="alert('جاري تشغيل التسجيل الصوتي...')">▶</button>
+                        <button class="action-btn" onclick="alert('عرض المقطع المرئي المنتج...')">مشاهدة</button>
                     </div>
 
                 </div>
@@ -373,24 +371,25 @@
         </div>
     </main>
 
-    <!-- تذييل الصفحة -->
     <footer>
-        <p>مشروع الذاكرة الوطنية بالذكاء الاصطناعي © 2026 - جميع الحقوق محفوظة</p>
+        <p>مشروع الذاكرة الوطنية - National Memory Platform © 2026</p>
     </footer>
 
     <script>
-        function runAIProcess() {
-            const inputVal = document.getElementById('aiInput').value;
-            const resultBox = document.getElementById('aiResultBox');
-            const outputText = document.getElementById('aiOutputText');
-            
-            if(inputVal.trim() === "") {
-                alert("الرجاء إدخال نص أو عبارة شعبية للمعالجة أولاً.");
+        function generateVideoAI() {
+            const text = document.getElementById('storyInput').value;
+            const dialect = document.getElementById('dialectSelect').value;
+            const style = document.getElementById('styleSelect').value;
+            const resultBox = document.getElementById('videoResultBox');
+            const descText = document.getElementById('videoDescText');
+
+            if(text.trim() === "") {
+                alert("الرجاء كتابة النص التراثي أولاً لكي يتم تحويله إلى فيديو.");
                 return;
             }
-            
+
             resultBox.style.display = "block";
-            outputText.innerHTML = "✨ تم بنجاح تحليل النص: \"" + inputVal + "\" وتم تفريغه رقمياً، استخراج المفردات التراثية، وربطه بالخريطة الجغرافية الوطنية!";
+            descText.innerHTML = `تمت معالجة النص (${dialect}) بأسلوب (${style}) وتحويله لمقطع مرئي رقمي!`;
         }
     </script>
 </body>
