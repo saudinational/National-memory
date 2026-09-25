@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الذاكرة الوطنية - National Memory</title>
+    <title>منصة سند - Sanad</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4A2511; /* بني تراثي غامق */
-            --accent-color: #D4AF37;  /* ذهبي تراثي */
-            --bg-color: #FDFBF7;      /* بيج دافئ للخلفية */
+            --primary-color: #1A3C34; /* أخضر داكن فخم */
+            --accent-color: #C5A059;  /* ذهبي متناسق */
+            --bg-color: #F7F5F0;      /* بيج فاتح دافئ للخلفية */
             --card-bg: #FFFFFF;
-            --text-main: #2C221E;
-            --text-muted: #6B5B53;
-            --border-color: #E6DCCD;
+            --text-main: #1F2D2B;
+            --text-muted: #5A6B67;
+            --border-color: #E2DDD5;
         }
 
         * {
@@ -31,10 +31,10 @@
         }
 
         header {
-            background: linear-gradient(135deg, #361A0C, var(--primary-color));
+            background: linear-gradient(135deg, #0F2A24, var(--primary-color));
             color: #FFF;
             padding: 15px 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -62,7 +62,7 @@
 
         .logo-text span {
             font-size: 0.75rem;
-            color: #E6DCCD;
+            color: #D3CDC4;
             display: block;
         }
 
@@ -82,12 +82,12 @@
         }
 
         .hero-banner {
-            background: linear-gradient(rgba(74, 37, 17, 0.9), rgba(54, 26, 12, 0.95));
+            background: linear-gradient(rgba(26, 60, 52, 0.95), rgba(15, 42, 36, 0.98));
             color: white;
             padding: 30px 20px;
             border-radius: 16px;
             text-align: center;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
             margin-bottom: 20px;
         }
 
@@ -102,13 +102,12 @@
             opacity: 0.9;
         }
 
-        /* حاوية الأقسام الثلاثة */
         .section-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
             margin-bottom: 20px;
         }
 
@@ -121,12 +120,11 @@
             gap: 8px;
         }
 
-        /* تبويبات الخيارات الثلاثة */
         .tabs-nav {
             display: flex;
             gap: 8px;
             margin-bottom: 15px;
-            background: #F4EEDC;
+            background: #EFECE6;
             padding: 6px;
             border-radius: 12px;
         }
@@ -159,7 +157,6 @@
             display: block;
         }
 
-        /* تنسيق عناصر الإدخال والأزرار داخل التبويبات */
         textarea, input[type="text"] {
             width: 100%;
             padding: 12px;
@@ -169,6 +166,7 @@
             outline: none;
             font-size: 0.9rem;
             resize: none;
+            background-color: #FAFAFA;
         }
 
         .btn-action {
@@ -185,11 +183,11 @@
         }
 
         .btn-action:hover {
-            background: #361A0C;
+            background: #0F2A24;
         }
 
         .recorder-box {
-            background: #FDFBF7;
+            background: #F7F5F0;
             border: 2px dashed var(--accent-color);
             padding: 25px;
             border-radius: 12px;
@@ -206,12 +204,12 @@
             font-size: 24px;
             cursor: pointer;
             margin-bottom: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
         .output-preview {
             margin-top: 15px;
-            background: #2C221E;
+            background: #1F2D2B;
             color: #FFF;
             padding: 15px;
             border-radius: 10px;
@@ -226,8 +224,8 @@
         }
 
         .region-badge {
-            background-color: #F4EEDC;
-            border: 1px solid #D6C7A1;
+            background-color: #EFECE6;
+            border: 1px solid #D6D0C4;
             padding: 10px;
             border-radius: 10px;
             text-align: center;
@@ -274,10 +272,10 @@
     <header>
         <div class="header-container">
             <div class="logo-area">
-                <span style="font-size: 24px;">🏺</span>
+                <span style="font-size: 24px;">🛡️</span>
                 <div class="logo-text">
-                    <h1>الذاكرة الوطنية</h1>
-                    <span>National Memory Platform</span>
+                    <h1>منصة سند</h1>
+                    <span>Sanad Platform</span>
                 </div>
             </div>
         </div>
@@ -290,18 +288,15 @@
                 <p>Oral Heritage Documentation & AI-Powered Processing</p>
             </div>
 
-            <!-- قسم خيارات الإدخال الثلاثة -->
             <div class="section-card">
                 <h3>🎛️ مركز المساهمة والتوثيق (Contribution Hub)</h3>
                 
-                <!-- أزرار التبويبات الثلاثة -->
                 <div class="tabs-nav">
                     <button class="tab-btn active" onclick="switchTab(event, 'tabWrite')">1. كتابة القصص</button>
                     <button class="tab-btn" onclick="switchTab(event, 'tabRecord')">2. التسجيل الصوتي</button>
                     <button class="tab-btn" onclick="switchTab(event, 'tabAI')">3. تحويل لمقطع مرئي</button>
                 </div>
 
-                <!-- الخيار الأول: كتابة القصص -->
                 <div id="tabWrite" class="tab-content active">
                     <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">اكتب السالفة أو المثل الشعبي يدوياً لإضافته للأرشيف النصي:</p>
                     <input type="text" id="storyTitle" placeholder="عنوان القصة أو المثل (Title)">
@@ -309,7 +304,6 @@
                     <button class="btn-action" onclick="saveWrittenStory()">حفظ القصة في الأرشيف</button>
                 </div>
 
-                <!-- الخيار الثاني: التسجيل الصوتي -->
                 <div id="tabRecord" class="tab-content">
                     <div class="recorder-box">
                         <button class="mic-icon-btn" onclick="toggleRecording()">🎙️</button>
@@ -318,15 +312,14 @@
                     </div>
                 </div>
 
-                <!-- الخيار الثالث: تحويل النص/الصوت إلى مقطع مرئي بالذكاء الاصطناعي -->
                 <div id="tabAI" class="tab-content">
-                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">أدخل النص أو استخدم الملف الصوتي ليقوم الذكاء الاصطناعي بإنتاج مقطع مرئي (فيديو وثائقي):</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">أدخل النص أو استخدم الملف الصوتي ليقوم الذكاء الاصطناعي بإنتاج مقطع مرئي:</p>
                     <textarea id="aiSourceText" placeholder="اكتب النص المراد تحويله إلى فيديو..."></textarea>
                     <button class="btn-action" style="background: var(--accent-color); color: var(--primary-color);" onclick="generateAIVideo()">✨ توليد المقطع المرئي (Generate Video)</button>
                     
                     <div id="aiVideoPreview" class="output-preview">
                         <strong>🎬 تم إنتاج المقطع المرئي بنجاح!</strong>
-                        <p style="font-size: 0.75rem; color: #E6DCCD; margin-top: 5px;">تم دمج السرد مع الخلفيات التراثية الجغرافية.</p>
+                        <p style="font-size: 0.75rem; color: #D3CDC4; margin-top: 5px;">تم دمج السرد مع العناصر البصرية المناسبة.</p>
                         <button class="btn-action" style="margin-top: 10px; font-size: 0.8rem;" onclick="alert('تم تنزيل المقطع المرئي بجودة عالية!')">تنزيل الفيديو (Download MP4)</button>
                     </div>
                 </div>
@@ -368,11 +361,10 @@
     </main>
 
     <footer>
-        <p>مشروع الذاكرة الوطنية - National Memory Platform © 2026</p>
+        <p>منصة سند - Sanad Platform © 2026</p>
     </footer>
 
     <script>
-        // دالة التبديل بين التبويبات الثلاثة
         function switchTab(evt, tabName) {
             let contents = document.getElementsByClassName("tab-content");
             for (let i = 0; i < contents.length; i++) {
@@ -386,14 +378,13 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // تفاعلات الأزرار للمحاكاة
         function saveWrittenStory() {
             const title = document.getElementById('storyTitle').value;
             if(title.trim() === "") {
                 alert("الرجاء كتابة عنوان القصة أولاً.");
                 return;
             }
-            alert("تم حفظ القصة النصية بنجاح في الأرشيف الوطني!");
+            alert("تم حفظ القصة النصية بنجاح في أرشيف سند!");
         }
 
         let isRecording = false;
